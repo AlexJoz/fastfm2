@@ -1,13 +1,16 @@
 all:
-	( cd fastfm-core2 ; \
-	  cmake -H. -B_lib -DEXTERNAL_RELEASE=1 \
-	                   -DCMAKE_BUILD_TYPE=Release \
-	                   -DCMAKE_DEBUG_POSTFIX=d; \
-	  cmake --build _lib )
+    cd fastfm-core2
+	cmake -H. -B_lib -DEXTERNAL_RELEASE=1  -DCMAKE_BUILD_TYPE=Release -DCMAKE_DEBUG_POSTFIX=d
+	ifdef $(MSVC)
+        cmake --build _lib --config Release
+	else
+        cmake --build _lib
+    endif
+
 
 .PHONY : pyclean
 pyclean:
-	rm -f *.so
+    rm -f *.so
 	rm -f fastfm2/core/ffm2.cpp
 
 .PHONY : clean

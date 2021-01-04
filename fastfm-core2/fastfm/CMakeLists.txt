@@ -38,6 +38,12 @@ endif()
 
 add_library(fastfm ${SOURCE_FILES} ${HEADER_FILES})
 
+if(MSVC)
+    #set_target_properties(fastfm PROPERTIES RUNTIME_OUTPUT_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}/$<0:>)
+    #set_target_properties(fastfm PROPERTIES LIBRARY_OUTPUT_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}/$<0:>)
+    set_target_properties(fastfm PROPERTIES ARCHIVE_OUTPUT_DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}/$<0:>)
+endif(MSVC)
+
 if(UNIX)
     find_package(Threads)
     target_link_libraries(fastfm ${CMAKE_THREAD_LIBS_INIT}) # For pthreads
