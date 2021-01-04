@@ -38,9 +38,11 @@ endif()
 
 add_library(fastfm ${SOURCE_FILES} ${HEADER_FILES})
 
-find_package(Threads)
-target_link_libraries(fastfm ${CMAKE_THREAD_LIBS_INIT}) # For pthreads
-target_link_libraries(fastfm dl) # For ldl
+if(UNIX)
+    find_package(Threads)
+    target_link_libraries(fastfm ${CMAKE_THREAD_LIBS_INIT}) # For pthreads
+    target_link_libraries(fastfm dl) # For ldl
+endif(UNIX)
 
 # solvers
 add_subdirectory(solvers)
