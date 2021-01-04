@@ -18,7 +18,7 @@ ffm2_library_solvers_dir = os.getenv("FFM_LIBRARY_SOLVERS_DIR",
 
 def build():
     extensions = [
-        Extension('fastfm', ['fastfm2/core/fastfm.pyx'],
+        Extension('ffm2', ['fastfm2/core/ffm2.pyx'],
                   libraries=['fastfm', 'solvers'],
                   library_dirs=[ffm2_library_dir, ffm2_library_solvers_dir],
                   include_dirs=['fastfm2/core',
