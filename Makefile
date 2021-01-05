@@ -1,6 +1,6 @@
 all:
 	cd fastfm-core2 && \
-	cmake -H. -B_lib -DEXTERNAL_RELEASE=1 -DCMAKE_BUILD_TYPE=Release && \
+	cmake -H. -B_lib -DEXTERNAL_RELEASE=1 -DCMAKE_BUILD_TYPE=Release -A Win32 && \
 	cmake --build _lib --config Release
 
 .PHONY : pyclean
