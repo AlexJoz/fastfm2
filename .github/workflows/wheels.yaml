@@ -12,7 +12,7 @@ jobs:
       fail-fast: false
       matrix:
         python: [37]
-        os: [ win_amd64 ]
+        os: [ windows-latest ]
     runs-on: ${{ matrix.os }}
     steps:
       - name: Checkout reposistory
@@ -33,7 +33,7 @@ jobs:
         env:
           CIBW_BEFORE_ALL_LINUX: curl -o cmake312.tar.gz -L https://github.com/Kitware/CMake/releases/download/v3.12.0/cmake-3.12.0.tar.gz && tar -zxvf cmake312.tar.gz && cd cmake-3.12.0 && ./bootstrap && make && make install && ln -fs /usr/local/bin/cmake /usr/bin/cmake
           CIBW_BEFORE_BUILD: make
-          CIBW_BUILD: cp${{ matrix.python }}-*
+          CIBW_BUILD: cp${{ matrix.python }}-win_amd64
 #          CIBW_BUILD_VERBOSITY: 3
           DISTUTILS_USE_SDK: 1
           MSSdk: 1
