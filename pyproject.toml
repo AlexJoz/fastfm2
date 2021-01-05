@@ -7,14 +7,15 @@ license = "GNU AGPLv3"
 readme = "README.md"
 repository = "https://github.com/palaimon/fastfm2"
 packages = [{ include = "fastfm2" }]
-include = [{ path = "./*.so", format = "wheel" }]
+include = [{ path = "./*.so", format = "wheel" },
+           { path = "./*.pyd", format = "wheel" }]
 
 [tool.poetry.build]
 generate-setup-file = false
 script = "build.py"
 
 [tool.poetry.dependencies]
-python = "^3.6"
+python = "^3.7"
 scikit-learn = "^0.22.1"
 numpy = "^1.20.0rc1"
 scipy = "^1.3"
