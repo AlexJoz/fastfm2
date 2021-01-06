@@ -1,4 +1,4 @@
-ifeq ($(arch),win32)
+ifeq ($(PLATFORM),win32)
 	GENERATOR_PLATFORM = -A Win32
 endif
 all:
