@@ -64,7 +64,8 @@ jobs:
           python -m cibuildwheel --output-dir dist
         env:
           CIBW_BEFORE_ALL_LINUX: curl -o cmake312.tar.gz -L https://github.com/Kitware/CMake/releases/download/v3.12.0/cmake-3.12.0.tar.gz && tar -zxvf cmake312.tar.gz && cd cmake-3.12.0 && ./bootstrap && make && make install && ln -fs /usr/local/bin/cmake /usr/bin/cmake
-          CIBW_BEFORE_BUILD: PLATFORM=${{ matrix.platform_id }} make
+          CIBW_ENVIRONMENT_WINDOWS: PLATFORM=${{ matrix.platform_id }}
+          CIBW_BEFORE_BUILD: make
           CIBW_BUILD: cp${{ matrix.python }}-${{ matrix.platform_id }}
 #          CIBW_BUILD_VERBOSITY: 3
           DISTUTILS_USE_SDK: 1
