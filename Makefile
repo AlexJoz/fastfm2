@@ -1,6 +1,9 @@
+ifeq ($(arch),win32)
+	GENERATOR_PLATFORM = -A Win32
+endif
 all:
 	cd fastfm-core2 && \
-	cmake -H. -B_lib -DEXTERNAL_RELEASE=1 -DCMAKE_BUILD_TYPE=Release -A Win32 && \
+	cmake -H. -B_lib -DEXTERNAL_RELEASE=1 -DCMAKE_BUILD_TYPE=Release $(GENERATOR_PLATFORM) && \
 	cmake --build _lib --config Release
 
 .PHONY : pyclean
